@@ -129,7 +129,13 @@ print("result2 =", result2)    # Output: result2 = True
 print("result3 =", result3)    # Output: result3 = False
 
 ```
+In this example, we declare two <b>Boolean</b> variables <b>is_valid</b> and <b>is_ready</b> and assign them the Boolean values True and False, respectively.
 
+We then use these Boolean values in conditional statements. The first if statement checks if is_valid is True and prints "Data is valid" if it is true. The second if statement uses the not operator to check if is_ready is False and prints "System not ready" if it evaluates to true.
+
+We also perform logical operations using the Boolean values. The and operator returns <b>True</b> if both operands are <b>True</b> and <b>False</b> otherwise. The or operator returns True if at least one of the operands is True. The not operator returns the opposite Boolean value.
+
+<b>Boolean</b> values are the result of logical expressions and are often used to control the flow of a program based on certain conditions. They play a crucial role in decision-making and allow programs to execute different branches of code depending on whether certain conditions are <b>true or false.</b>
 ### Text Type:
 
 str: Represents strings of characters, such as "Hello, World!". Strings are used to store and manipulate textual data.
