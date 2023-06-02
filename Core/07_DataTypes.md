@@ -66,14 +66,75 @@ The <b>float</b> data type supports all basic arithmetic operations, just like t
 You can also use the <b>float</b> data type in conjunction with other data types, such as storing floating-point numbers in lists, dictionaries, or other data structures.
 
 It's worth noting that Python also provides a decimal module for precise decimal arithmetic, which can be used when exact decimal calculations are required and to mitigate the precision issues associated with float numbers.
-5. <b>complex:</b> Represents complex numbers in the form a + bj, where a and b are real numbers and j represents the imaginary unit.
 
+### complex:
+In Python, the <b>complex</b> data type is used to represent complex numbers. A <b>complex number</b> is a number of the form a + bj, where a and b are real numbers, and j represents the imaginary unit. Here's an example that demonstrates the usage of the complex data type:
+
+#### Complex number assignment
+```python
+z1 = 3 + 2j
+z2 = -1 + 4j
+```
+
+#### Mathematical operations
+```python
+sum = z1 + z2
+difference = z1 - z2
+product = z1 * z2
+quotient = z1 / z2
+conjugate = z1.conjugate()
+```
+#### Output
+```python
+print("z1 =", z1)                      # Output: z1 = (3+2j)
+print("z2 =", z2)                      # Output: z2 = (-1+4j)
+print("sum =", sum)                    # Output: sum = (2+6j)
+print("difference =", difference)        # Output: difference = (4-2j)
+print("product =", product)              # Output: product = (-11+2j)
+print("quotient =", quotient)            # Output: quotient = (-0.2-0.6j)
+print("conjugate of z1 =", conjugate)    # Output: conjugate of z1 = (3-2j)
+```
+
+In this example, we assign two complex numbers <b>z1</b> and <b>z2</b> using the <b>complex</b> data type. We then perform various mathematical operations with these complex numbers, such as addition, subtraction, multiplication, division, and conjugation.
+
+The <b>complex</b> data type supports all basic arithmetic operations, including addition (+), subtraction (-), multiplication (*), and division (/), just like other numeric types. The conjugate of a complex number can be obtained using the <b>conjugate()</b> method.
+
+Complex numbers are commonly used in mathematical calculations and scientific applications that involve imaginary numbers and complex algebra.
+
+It's important to note that Python uses <b>j</b> to represent the imaginary unit, whereas some other programming languages use <b>i</b>.
 ### Boolean Type:
-<b>bool:</b> Represents Boolean values that can be either True or False. Boolean values are used in logical operations and conditional statements.
+
+In Python, the <b>bool</b> data type is used to represent Boolean values, which can have two possible states: <b>True</b> or <b>False</b>. Booleans are often used in conditional statements, logical operations, and control flow. Here are some examples that demonstrate the usage of the <b>bool</b> data type:
+#### Boolean assignment
+```python
+is_valid = True
+is_ready = False
+```
+#### Conditional statements
+```python
+if is_valid:
+    print("Data is valid")   # Output: Data is valid
+
+if not is_ready:
+    print("System not ready")   # Output: System not ready
+```
+#### Logical operations
+```python
+result1 = True and False
+result2 = True or False
+result3 = not True
+
+print("result1 =", result1)    # Output: result1 = False
+print("result2 =", result2)    # Output: result2 = True
+print("result3 =", result3)    # Output: result3 = False
+
+```
 
 ### Text Type:
 
 str: Represents strings of characters, such as "Hello, World!". Strings are used to store and manipulate textual data.
+
+
 Sequence Types:
 
 list: Represents ordered, mutable collections of elements. Lists can contain elements of different types and can be modified after creation.
