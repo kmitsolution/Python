@@ -318,7 +318,7 @@ print(len(my_memoryview))  # Output: 13
 ```
 ### Sequence Types:
 In Python, there are several built-in sequence data types (list,tuple,range,dict,set ) that allow you to store and manipulate collections of items.
-##### list
+#### list
 In Python, the list data type is a built-in sequence type that allows you to store and manipulate a collection of items. Lists are ordered, mutable, and can contain elements of different data types. Lists are very versatile and offer various operations like accessing elements by index, modifying elements, appending and removing elements, slicing, checking for membership, obtaining the length, and concatenating lists. The ability to modify lists in-place makes them a powerful and flexible data structure in Python. Here's an example of using the list data type in Python:
 ##### Creating a list
 ```python
@@ -363,7 +363,7 @@ combined_list = my_list + other_list
 print(combined_list)  # Output: [1, 'two', 3, 5.5, 6, 'seven', 8]
 ```
 
-##### tuple: 
+#### tuple: 
 In Python, a tuple is an ordered and immutable collection of elements. Tuples are defined using parentheses () and the elements are separated by commas. Tuples are useful when you need to store a collection of related values that shouldn't be modified. They are commonly used for returning multiple values from a function, as dictionary keys (since they are immutable), and for representing fixed sets of values. While tuples are immutable, you can perform operations like accessing elements, obtaining the length, slicing, checking membership, and concatenating tuples.Here's an example of using the tuple data type in Python:
 ##### Creating a tuple
 ```python
@@ -397,7 +397,7 @@ combined_tuple = my_tuple + other_tuple
 print(combined_tuple)  # Output: (1, 2, 'three', 4.5, 'four', 5.5)
 ```
 
-##### range
+#### range
 In Python, the range type represents an immutable sequence of numbers. It is often used for iterating over a sequence of numbers in a loop or generating a sequence of integers. The range() function is used to create a range object. Here's an example of using the range type in Python:
 
 ##### Creating a range object
