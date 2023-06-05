@@ -316,7 +316,7 @@ print(my_bytes)  # Output: b'Jello, Python!'
 ```python
 print(len(my_memoryview))  # Output: 13
 ```
-#### Sequence Types:
+### Sequence Types:
 In Python, there are several built-in sequence data types (list,tuple,range,dict,set ) that allow you to store and manipulate collections of items.
 ##### list
 In Python, the list data type is a built-in sequence type that allows you to store and manipulate a collection of items. Lists are ordered, mutable, and can contain elements of different data types. Lists are very versatile and offer various operations like accessing elements by index, modifying elements, appending and removing elements, slicing, checking for membership, obtaining the length, and concatenating lists. The ability to modify lists in-place makes them a powerful and flexible data structure in Python. Here's an example of using the list data type in Python:
@@ -396,6 +396,45 @@ other_tuple = ('four', 5.5)
 combined_tuple = my_tuple + other_tuple
 print(combined_tuple)  # Output: (1, 2, 'three', 4.5, 'four', 5.5)
 ```
+
+##### range
+In Python, the range type represents an immutable sequence of numbers. It is often used for iterating over a sequence of numbers in a loop or generating a sequence of integers. The range() function is used to create a range object. Here's an example of using the range type in Python:
+
+##### Creating a range object
+```python
+my_range = range(1, 5)  # Represents the numbers 1, 2, 3, 4
+```
+##### Accessing range elements
+```python
+print(my_range[0])  # Output: 1
+print(my_range[2])  # Output: 3
+```
+
+##### Length of the range
+```python
+print(len(my_range))  # Output: 4
+```
+
+##### Iterating over the range
+```python
+for num in my_range:
+    print(num)  # Output: 1, 2, 3, 4
+```
+##### Checking if a number exists in the range
+```python
+print(3 in my_range)  # Output: True
+```
+##### Converting range to a list
+```python
+my_list = list(my_range)
+print(my_list)  # Output: [1, 2, 3, 4]
+```
+##### Creating a range with a step
+```python
+my_range_with_step = range(1, 10, 2)  # Represents the numbers 1, 3, 5, 7, 9
+print(list(my_range_with_step))  # Output: [1, 3, 5, 7, 9]
+```
+
 range: Represents a sequence of numbers and is commonly used in loops and iterations.
 Mapping Type:
 
