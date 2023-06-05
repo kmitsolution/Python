@@ -110,6 +110,7 @@ In Python, the <b>bool</b> data type is used to represent Boolean values, which 
 is_valid = True
 is_ready = False
 ```
+
 #### Conditional statements
 ```python
 if is_valid:
@@ -137,10 +138,184 @@ We also perform logical operations using the Boolean values. The and operator re
 
 <b>Boolean</b> values are the result of logical expressions and are often used to control the flow of a program based on certain conditions. They play a crucial role in decision-making and allow programs to execute different branches of code depending on whether certain conditions are <b>true or false.</b>
 ### Text Type:
+In Python, there are several data types for representing text or string data. The main text data types in Python are str,bytes,bytearray,memoryview:
 
-str: Represents strings of characters, such as "Hello, World!". Strings are used to store and manipulate textual data.
+#### str:
+Represents strings of characters, such as "Hello, World!". Strings are used to store and manipulate textual data. Below are some examples of string data type
 
+##### Creating a string variable
+```python
+my_string = 'Hello, world!'
 
+# Printing the string
+print(my_string)
+```
+
+##### Accessing individual characters
+```python
+print(my_string[0])  # Output: 'H'
+print(my_string[7])  # Output: 'w'
+```
+##### Slicing the string
+```python
+print(my_string[7:12])  # Output: 'world'
+```
+##### Concatenating strings
+```python
+greeting = 'Hello'
+name = 'Alice'
+message = greeting + ', ' + name + '!'
+print(message)  # Output: 'Hello, Alice!'
+```
+
+##### String length
+```python
+print(len(my_string))  # Output: 13
+```
+
+##### Changing case
+```python
+print(my_string.upper())  # Output: 'HELLO, WORLD!'
+print(my_string.lower())  # Output: 'hello, world!'
+```
+
+##### Checking if a substring exists in a string
+```python
+print('world' in my_string)  # Output: True
+```
+##### Splitting a string into a list of words
+```python
+words = my_string.split()
+print(words)  # Output: ['Hello,', 'world!']
+```
+
+##### Joining a list of strings into a single string
+```python
+new_string = ' '.join(words)
+print(new_string)  # Output: 'Hello, world!'
+```
+#### bytes
+The bytes data type represents a sequence of bytes, which is used to store binary data or text encoded in a specific character encoding. Bytes objects are immutable. You can create a bytes object by prefixing a string literal with the letter 'b'. 
+##### Creating a bytes variable
+```python
+my_bytes = b'Hello, world!'
+```
+##### Printing the bytes
+```python
+print(my_bytes)    # output: b'Hello, world!'
+```
+##### Accessing individual bytes (elements)
+```python
+print(my_bytes[0])  # Output: 72
+print(my_bytes[7])  # Output: 119
+```
+##### Slicing the bytes
+```python
+print(my_bytes[7:12])  # Output: b'world'
+```
+##### Converting bytes to string
+```python
+my_string = my_bytes.decode()
+print(my_string)  # Output: 'Hello, world!'
+```
+##### Creating bytes from a string
+```python
+new_bytes = my_string.encode()
+print(new_bytes)  # Output: b'Hello, world!'
+```
+##### Modifying bytes
+```python
+my_modified_bytes = bytearray(my_bytes)
+my_modified_bytes[0] = 74
+print(my_modified_bytes)  # Output: bytearray(b'Jello, world!')
+```
+##### Concatenating bytes
+```python
+new_bytes = my_bytes + b' Welcome!'
+print(new_bytes)  # Output: b'Hello, world! Welcome!'
+```
+#### bytearray: 
+The <b>bytearray</b> data type is similar to the bytes type, but it is mutable, meaning you can modify its content. It is often used when you need to modify the binary data. You can create a bytearray object by calling the bytearray() constructor.
+
+##### Creating a bytearray variable
+```python
+my_bytearray = bytearray(b'Hello, world!')
+```
+##### Printing the bytearray
+```python
+print(my_bytearray)
+```
+
+##### Accessing individual bytes (elements)
+```python
+print(my_bytearray[0])  # Output: 72
+print(my_bytearray[7])  # Output: 119
+```
+
+##### Slicing the bytearray
+```python
+print(my_bytearray[7:12])  # Output: bytearray(b'world')
+```
+##### Modifying the bytearray
+```python
+my_bytearray[0] = 74
+print(my_bytearray)  # Output: bytearray(b'Jello, world!')
+```
+
+##### Appending bytes to the bytearray
+```python
+my_bytearray.append(33)
+print(my_bytearray)  # Output: bytearray(b'Jello, world!!')
+```
+##### Changing the content of a slice
+```python
+my_bytearray[7:12] = b'Python'
+print(my_bytearray)  # Output: bytearray(b'Jello, Python!!')
+```
+##### Converting a bytearray to bytes
+```python
+my_bytes = bytes(my_bytearray)
+print(my_bytes)  # Output: b'Jello, Python!!'
+```
+#### memoryview: 
+The <b>memoryview</b> data type provides a way to access the internal data of an object, such as bytes or bytearray, without making a copy of it. It allows you to manipulate the data directly. You can create a memoryview object by calling the memoryview() constructor. 
+
+##### Creating a bytes object
+```python
+my_bytes = b'Hello, world!'
+```
+##### Creating a memoryview object
+```python
+my_memoryview = memoryview(my_bytes)
+```
+##### Accessing individual bytes using memoryview
+```python
+print(my_memoryview[0])  # Output: 72
+print(my_memoryview[7])  # Output: 119
+```
+##### Slicing the memoryview
+```python
+print(my_memoryview[7:12])  # Output: <memory at 0x...>
+```
+##### Converting memoryview to bytes
+```python
+new_bytes = bytes(my_memoryview[7:12])
+print(new_bytes)  # Output: b'world'
+```
+##### Modifying the memoryview
+```python
+my_memoryview[0] = 74
+print(my_bytes)  # Output: b'Jello, world!'
+```
+##### Changing the content of a slice
+```python
+my_memoryview[7:12] = b'Python'
+print(my_bytes)  # Output: b'Jello, Python!'
+```
+##### Obtaining the size of the memoryview
+```python
+print(len(my_memoryview))  # Output: 13
+```
 Sequence Types:
 
 list: Represents ordered, mutable collections of elements. Lists can contain elements of different types and can be modified after creation.
