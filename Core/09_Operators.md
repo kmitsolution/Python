@@ -60,6 +60,59 @@ print(result)  # Output: 3
 ```
 
 These arithmetic operators can be combined and used in expressions to perform complex calculations in Python. It's important to understand the precedence and order of evaluation when multiple operators are involved in an expression.
+
+### Assignment Operators
+Assignment operators in Python are used to assign values to variables. They allow you to modify the value of a variable by combining an operation with the assignment. Here are the assignment operators in Python:
+
+#### Simple Assignment (=): Assigns the value on the right-hand side to the variable on the left-hand side.
+```python
+x = 5
+```
+#### Addition Assignment (+=): Adds the value on the right-hand side to the variable on the left-hand side and assigns the result to the variable.
+```python
+x = 10
+x += 3  # Equivalent to: x = x + 3
+print(x)  # Output: 13
+```
+#### Subtraction Assignment (-=): Subtracts the value on the right-hand side from the variable on the left-hand side and assigns the result to the variable.
+```python
+x = 15
+x -= 7  # Equivalent to: x = x - 7
+print(x)  # Output: 8
+```
+#### Multiplication Assignment (*=): Multiplies the variable on the left-hand side by the value on the right-hand side and assigns the result to the variable.
+```python
+x = 4
+x *= 5  # Equivalent to: x = x * 5
+print(x)  # Output: 20
+```
+#### Division Assignment (/=): Divides the variable on the left-hand side by the value on the right-hand side and assigns the result to the variable.
+```python
+x = 25
+x /= 5  # Equivalent to: x = x / 5
+print(x)  # Output: 5.0
+```
+#### Modulo Assignment (%=): Calculates the remainder of dividing the variable on the left-hand side by the value on the right-hand side and assigns the result to the variable.
+```python
+x = 17
+x %= 5  # Equivalent to: x = x % 5
+print(x)  # Output: 2
+```
+#### Exponentiation Assignment (**=): Raises the variable on the left-hand side to the power of the value on the right-hand side and assigns the result to the variable.
+
+```python
+x = 2
+x **= 3  # Equivalent to: x = x ** 3
+print(x)  # Output: 8
+```
+#### Floor Division Assignment (//=): Divides the variable on the left-hand side by the value on the right-hand side, rounds down to the nearest whole number, and assigns the result to the variable.
+
+```python
+x = 17
+x //= 5  # Equivalent to: x = x // 5
+print(x)  # Output: 3
+```
+These assignment operators provide a concise way to perform an operation and assign the result to a variable. They can be useful for updating variables based on their current values.
 Comparison Operators:
 
 == (equal to), != (not equal to), > (greater than), < (less than), >= (greater than or equal to), <= (less than or equal to).
