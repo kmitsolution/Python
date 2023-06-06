@@ -1,5 +1,5 @@
-Python has several built-in primitive data types that are used to represent different kinds of values. 
-## These primitive data types include:
+Python has several built-in data types that are used to represent different kinds of values. 
+## These data types include:
 
 ### Numeric Types:
 1. <b>int:</b> 
@@ -434,17 +434,146 @@ print(my_list)  # Output: [1, 2, 3, 4]
 my_range_with_step = range(1, 10, 2)  # Represents the numbers 1, 3, 5, 7, 9
 print(list(my_range_with_step))  # Output: [1, 3, 5, 7, 9]
 ```
+### Mapping Type (dictionary)
+In Python, the built-in mapping type is called a <b>dictionary</b>. Dictionaries are unordered collections of key-value pairs, where each key must be unique within the dictionary. They are also known as associative arrays or hash maps in other programming languages.
 
-range: Represents a sequence of numbers and is commonly used in loops and iterations.
-Mapping Type:
+Dictionaries are flexible and can store values of different types. The keys must be hashable objects (such as strings, numbers, or tuples), while the values can be any Python object. Dictionaries provide efficient lookup by key, making them suitable for tasks like data retrieval and mapping relationships between different entities.
 
-dict: Represents key-value pairs, also known as dictionaries or associative arrays. Dictionaries are unordered collections of elements, where each element is identified by a unique key.
-Set Types:
+##### Creating a dictionary
+```python
+my_dict = {'key1': 'value1', 'key2': 'value2', 'key3': 'value3'}
+```
+##### Accessing values by key
+```python
+print(my_dict['key1'])  # Output: value1
+```
+##### Modifying values
+```python
+my_dict['key2'] = 'new value'
+print(my_dict['key2'])  # Output: new value
+```
+##### Adding new key-value pairs
+```python
+my_dict['key4'] = 'value4'
+```
+##### Checking if a key exists
+```python
+if 'key3' in my_dict:
+    print("Key 'key3' exists")
+```
+##### Removing a key-value pair
+```python
+del my_dict['key1']
+```
+##### Iterating over keys
+```python
+for key in my_dict:
+    print(key, my_dict[key])
+```
+##### Getting the number of key-value pairs
+```python
+print("Number of pairs:", len(my_dict))
+```
 
-set: Represents unordered collections of unique elements. Sets are useful for performing mathematical operations like union, intersection, and difference.
-frozenset: Represents an immutable version of a set. Once created, a frozenset cannot be modified.
-None Type:
+### Set Types:
 
-None: Represents a special value indicating the absence of a value. It is commonly used to denote the absence of a return value or to initialize variables.
-These primitive data types provide the foundation for representing and manipulating different types of data in Python. Depending on the requirements of your program, you can choose the appropriate data type to store and process your data effectively.
+#### set: 
+In Python, the built-in set types are set and frozenset. Sets are unordered collections of unique elements, while frozensets are immutable versions of sets. Sets and frozensets are useful for tasks that involve working with unique elements, performing set operations, and removing duplicates from a sequence of items.
 
+Here's an example of how to create and use sets and frozensets in Python:
+
+##### Creating a set
+```python
+my_set = {1, 2, 3, 4, 5}
+print(my_set)  # Output: {1, 2, 3, 4, 5}
+```
+##### Creating a frozenset
+```python
+my_frozenset = frozenset([1, 2, 3, 4, 5])
+print(my_frozenset)  # Output: frozenset({1, 2, 3, 4, 5})
+```
+##### Adding elements to a set
+```python
+my_set.add(6)
+print(my_set)  # Output: {1, 2, 3, 4, 5, 6}
+```
+##### Removing an element from a set
+```python
+my_set.remove(3)
+print(my_set)  # Output: {1, 2, 4, 5, 6}
+```
+##### Checking membership in a set
+```python
+print(2 in my_set)  # Output: True
+```
+##### Performing set operations
+```python
+set1 = {1, 2, 3}
+set2 = {3, 4, 5}
+union_set = set1.union(set2)
+print(union_set)  # Output: {1, 2, 3, 4, 5}
+
+intersection_set = set1.intersection(set2)
+print(intersection_set)  # Output: {3}
+
+difference_set = set1.difference(set2)
+print(difference_set)  # Output: {1, 2}
+```
+##### Iterating over a set
+```python
+for element in my_set:
+    print(element)
+```
+##### Getting the number of elements in a set
+```python
+print("Number of elements:", len(my_set))
+```
+### None Type:
+
+In Python, None is a special built-in constant that represents the absence of a value or the lack of a return value. It is often used to indicate that a variable or function does not have a meaningful value or does not return anything. <b>None</b> is <b>NOT</b> the same as an empty list, dictionary, or other containers. It specifically represents the absence of a value or the lack of a meaningful return.
+
+Here are a few key points about None in Python:
+
+1. None is a singleton object of the NoneType class. It is not the same as an empty string (''), zero (0), or False.
+2. It is commonly used as the default value for function parameters when there is no specific default value provided. This allows the function to handle cases where an argument is not passed explicitly.
+
+```python
+def greet(name=None):
+    if name is None:
+        print("Hello, anonymous!")
+    else:
+        print("Hello,", name)
+
+greet()  # Output: Hello, anonymous!
+greet("Alice")  # Output: Hello, Alice
+```
+3. None is often returned by functions that do not have an explicit return statement or by functions that intentionally return no value.
+```python
+def do_something():
+    # Do something, but no return statement
+
+result = do_something()
+print(result)  # Output: None
+
+```
+4. None can be used in conditional statements to check if a variable has been assigned a value or not.
+```python
+value = None
+
+if value is None:
+    print("Value is not assigned")
+
+value = 42
+
+if value is not None:
+    print("Value is assigned and not None")
+```
+5. None is falsy in boolean context. This means that if it is used in a condition, it will evaluate to False.
+```python
+if None:
+    print("This won't be executed")
+
+if not None:
+    print("This will be executed")
+
+```
