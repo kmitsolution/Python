@@ -185,85 +185,101 @@ Logical operators are commonly used in conditional statements, loops, and other 
 ### Bitwise Operators:
 Bitwise operators in Python are used to perform operations on individual bits of integer values. These operators manipulate the binary representations of numbers. Here are the bitwise operators in Python:
 
-Bitwise AND (&): Performs a bitwise AND operation between the bits of the operands. Each bit in the result is set to 1 if both corresponding bits in the operands are 1; otherwise, it is set to 0.
-
-Example:
-
-python
-Copy code
+#### Bitwise AND (&): Performs a bitwise AND operation between the bits of the operands. Each bit in the result is set to 1 if both corresponding bits in the operands are 1; otherwise, it is set to 0.
+```python
 a = 10  # Binary: 1010
 b = 6   # Binary: 0110
 result = a & b  # Binary: 0010 (Decimal: 2)
 print(result)  # Output: 2
+```
 
-
-Bitwise OR (|): Performs a bitwise OR operation between the bits of the operands. Each bit in the result is set to 1 if at least one of the corresponding bits in the operands is 1; otherwise, it is set to 0.
-
-Example:
-
-python
-Copy code
+#### Bitwise OR (|): Performs a bitwise OR operation between the bits of the operands. Each bit in the result is set to 1 if at least one of the corresponding bits in the operands is 1; otherwise, it is set to 0.
+```python
 a = 10  # Binary: 1010
 b = 6   # Binary: 0110
 result = a | b  # Binary: 1110 (Decimal: 14)
 print(result)  # Output: 14
+```
 
-
-Bitwise XOR (^): Performs a bitwise XOR (exclusive OR) operation between the bits of the operands. Each bit in the result is set to 1 if the corresponding bits in the operands are different; otherwise, it is set to 0.
-
-Example:
-
-python
-Copy code
+#### Bitwise XOR (^): Performs a bitwise XOR (exclusive OR) operation between the bits of the operands. Each bit in the result is set to 1 if the corresponding bits in the operands are different; otherwise, it is set to 0.
+```python
 a = 10  # Binary: 1010
 b = 6   # Binary: 0110
 result = a ^ b  # Binary: 1100 (Decimal: 12)
 print(result)  # Output: 12
-
-
-Bitwise NOT (~): Flips the bits of the operand, converting 0 to 1 and 1 to 0. It operates on the binary representation of the operand and returns the bitwise negation of the operand.
-
-Example:
-
-python
-Copy code
+```
+#### Bitwise NOT (~): Flips the bits of the operand, converting 0 to 1 and 1 to 0. It operates on the binary representation of the operand and returns the bitwise negation of the operand.
+```python
 a = 10  # Binary: 1010
 result = ~a  # Binary: -1011 (Decimal: -11)
 print(result)  # Output: -11
-
-
-Bitwise Left Shift (<<): Shifts the bits of the left-hand operand to the left by the number of positions specified by the right-hand operand. Zeros are shifted in from the right side.
-
-Example:
-
-python
-Copy code
+```
+#### Bitwise Left Shift (<<): Shifts the bits of the left-hand operand to the left by the number of positions specified by the right-hand operand. Zeros are shifted in from the right side.
+```python
 a = 5  # Binary: 0101
 result = a << 2  # Binary: 10100 (Decimal: 20)
 print(result)  # Output: 20
+```
+
+#### Bitwise Right Shift (>>): Shifts the bits of the left-hand operand to the right by the number of positions specified by the right-hand operand. Zeros are shifted in from the left side.
+
+```python
+a = 10  # Binary: 1010
+result = a >> 2  # Binary: 10 (Decimal: 2)
+print(result)  # Output: 2
+```
+Bitwise operators are typically used in low-level programming, network protocols, and certain algorithmic operations where direct manipulation of bits is required.
+
+### Membership Operators
+Membership operators in Python are used to test whether a value or a variable is a member of a sequence or collection. These operators return a Boolean value (True or False) based on the membership test. Here are the membership operators in Python:
+
+#### in operator: Returns True if a value or variable is found in the sequence.
+```python
+fruts = ['apple', 'banana', 'cherry']
+print('banana' in fruits)  # Output: True
+```
+#### not in operator: Returns True if a value or variable is not found in the sequence.
+```python
+fruits = ['apple', 'banana', 'cherry']
+print('orange' not in fruits)  # Output: True
+```
+
+Membership operators are commonly used to check if an element exists in a list, tuple, set, or other iterable data structures. They are also useful in conditional statements and loops for making decisions based on the presence or absence of certain values in a collection.
+
+### Identity Operators:
+The identity operator in Python is used to compare the memory addresses of two objects and determine if they refer to the same object. The identity operator consists of two operators:
+
+is operator: It returns True if the operands on both sides refer to the same object, and False otherwise.
+
+Example:
+python
+Copy code
+x = [1, 2, 3]
+y = x
+z = [1, 2, 3]
+print(x is y)  # Output: True
+print(x is z)  # Output: False
 
 
-Bitwise Right Shift (>>): Shifts the bits of the left-hand operand to the right by the number of positions specified by the right-hand operand. Zeros are shifted in from the left side.
+is not operator: It returns True if the operands on both sides do not refer to the same object, and False if they refer to the same object.
 
 Example:
 
 python
 Copy code
-a = 10  # Binary: 1010
-result = a >> 2  # Binary: 10 (Decimal: 2)
-print(result)  # Output: 2
+x = [1, 2, 3]
+y = x
+z = [1, 2, 3]
+print(x is not y)  # Output: False
+print(x is not z)  # Output: True
 
 
-Bitwise operators are typically used in low-level programming, network protocols, and certain algorithmic operations where direct manipulation of bits is required.
-Membership Operators:
+The identity operator checks if two variables or objects refer to the same memory location. It is particularly useful when comparing objects that are mutable (such as lists, dictionaries, or custom objects) and determining if they are the same instance. However, for comparing the values of objects, the equality operator (==) is more appropriate.
 
-in (checks if a value exists in a sequence), not in (checks if a value does not exist in a sequence).
-Identity Operators:
-
-is (checks if two objects are the same object), is not (checks if two objects are not the same object).
-These operators compare the memory addresses of objects.
 Unary Operators:
 
 + (unary plus), - (unary minus), ~ (unary bitwise NOT).
 These operators perform operations on a single operand.
 These are the primary operators in Python, and they can be combined and used in expressions to perform various operations and manipulate values. It's important to understand their behavior and precedence rules to write correct and efficient code.
+
+
