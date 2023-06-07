@@ -113,18 +113,148 @@ x //= 5  # Equivalent to: x = x // 5
 print(x)  # Output: 3
 ```
 These assignment operators provide a concise way to perform an operation and assign the result to a variable. They can be useful for updating variables based on their current values.
-Comparison Operators:
 
-== (equal to), != (not equal to), > (greater than), < (less than), >= (greater than or equal to), <= (less than or equal to).
-These operators return a Boolean value (True or False) based on the comparison result.
-Logical Operators:
+### Comparison Operators
+Comparison operators in Python are used to compare values and determine the relationship between them. These operators return a Boolean value (True or False) based on the comparison result. Here are the comparison operators in Python:
 
-and (logical AND), or (logical OR), not (logical NOT).
-These operators are used to combine and manipulate Boolean values (True or False).
-Bitwise Operators:
+#### Equal to (==): Checks if the operands on both sides are equal.
+```python
+x = 5
+y = 3
+print(x == y)  # Output: False
+```
+#### Not equal to (!=): Checks if the operands on both sides are not equal.
+```python
+x = 5
+y = 3
+print(x != y)  # Output: True
+```
+#### Greater than (>): Checks if the operand on the left side is greater than the operand on the right side.
+```python
+x = 5
+y = 3
+print(x > y)  # Output: True
+```
+#### Less than (<): Checks if the operand on the left side is less than the operand on the right side.
+```python
+x = 5
+y = 3
+print(x < y)  # Output: False
+```
+#### Greater than or equal to (>=): Checks if the operand on the left side is greater than or equal to the operand on the right side.
+```python
+x = 5
+y = 3
+print(x >= y)  # Output: True
+```
+#### Less than or equal to (<=): Checks if the operand on the left side is less than or equal to the operand on the right side.
+```python
+x = 5
+y = 3
+print(x <= y)  # Output: False
+```
+These comparison operators can be used in conditional statements, loops, and other situations where you need to evaluate conditions. They allow you to make decisions and control the flow of your program based on the comparison results.
 
-& (bitwise AND), | (bitwise OR), ^ (bitwise XOR), ~ (bitwise NOT), << (bitwise left shift), >> (bitwise right shift).
-These operators perform operations on individual bits of integers.
+### Logical Operators:
+
+Logical operators in Python are used to combine and manipulate Boolean values (True or False). They allow you to perform logical operations on multiple conditions and evaluate the overall truthiness or falsiness of an expression. Here are the logical operators in Python:
+
+#### Logical AND (and): Returns True if both operands are True, otherwise returns False.
+```python
+x = 5
+y = 3
+z = 7
+print(x > y and x < z)  # Output: True
+```
+#### Logical OR (or): Returns True if at least one of the operands is True, otherwise returns False.
+```python
+x = 5
+y = 3
+z = 7
+print(x > y or x > z)  # Output: True
+```
+#### Logical NOT (not): Reverses the Boolean value of the operand. If the operand is True, it returns False, and if the operand is False, it returns True.
+```python
+x = 5
+y = 3
+print(not x > y)  # Output: False
+```
+
+Logical operators are commonly used in conditional statements, loops, and other situations where you need to combine and evaluate multiple conditions. They allow you to make complex decisions based on the truthiness or falsiness of different expressions.
+
+### Bitwise Operators:
+Bitwise operators in Python are used to perform operations on individual bits of integer values. These operators manipulate the binary representations of numbers. Here are the bitwise operators in Python:
+
+Bitwise AND (&): Performs a bitwise AND operation between the bits of the operands. Each bit in the result is set to 1 if both corresponding bits in the operands are 1; otherwise, it is set to 0.
+
+Example:
+
+python
+Copy code
+a = 10  # Binary: 1010
+b = 6   # Binary: 0110
+result = a & b  # Binary: 0010 (Decimal: 2)
+print(result)  # Output: 2
+
+
+Bitwise OR (|): Performs a bitwise OR operation between the bits of the operands. Each bit in the result is set to 1 if at least one of the corresponding bits in the operands is 1; otherwise, it is set to 0.
+
+Example:
+
+python
+Copy code
+a = 10  # Binary: 1010
+b = 6   # Binary: 0110
+result = a | b  # Binary: 1110 (Decimal: 14)
+print(result)  # Output: 14
+
+
+Bitwise XOR (^): Performs a bitwise XOR (exclusive OR) operation between the bits of the operands. Each bit in the result is set to 1 if the corresponding bits in the operands are different; otherwise, it is set to 0.
+
+Example:
+
+python
+Copy code
+a = 10  # Binary: 1010
+b = 6   # Binary: 0110
+result = a ^ b  # Binary: 1100 (Decimal: 12)
+print(result)  # Output: 12
+
+
+Bitwise NOT (~): Flips the bits of the operand, converting 0 to 1 and 1 to 0. It operates on the binary representation of the operand and returns the bitwise negation of the operand.
+
+Example:
+
+python
+Copy code
+a = 10  # Binary: 1010
+result = ~a  # Binary: -1011 (Decimal: -11)
+print(result)  # Output: -11
+
+
+Bitwise Left Shift (<<): Shifts the bits of the left-hand operand to the left by the number of positions specified by the right-hand operand. Zeros are shifted in from the right side.
+
+Example:
+
+python
+Copy code
+a = 5  # Binary: 0101
+result = a << 2  # Binary: 10100 (Decimal: 20)
+print(result)  # Output: 20
+
+
+Bitwise Right Shift (>>): Shifts the bits of the left-hand operand to the right by the number of positions specified by the right-hand operand. Zeros are shifted in from the left side.
+
+Example:
+
+python
+Copy code
+a = 10  # Binary: 1010
+result = a >> 2  # Binary: 10 (Decimal: 2)
+print(result)  # Output: 2
+
+
+Bitwise operators are typically used in low-level programming, network protocols, and certain algorithmic operations where direct manipulation of bits is required.
 Membership Operators:
 
 in (checks if a value exists in a sequence), not in (checks if a value does not exist in a sequence).
