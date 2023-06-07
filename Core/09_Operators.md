@@ -249,37 +249,55 @@ Membership operators are commonly used to check if an element exists in a list, 
 ### Identity Operators:
 The identity operator in Python is used to compare the memory addresses of two objects and determine if they refer to the same object. The identity operator consists of two operators:
 
-is operator: It returns True if the operands on both sides refer to the same object, and False otherwise.
-
-Example:
-python
-Copy code
+#### is operator: It returns True if the operands on both sides refer to the same object, and False otherwise.
+```python
 x = [1, 2, 3]
 y = x
 z = [1, 2, 3]
 print(x is y)  # Output: True
 print(x is z)  # Output: False
+```
 
-
-is not operator: It returns True if the operands on both sides do not refer to the same object, and False if they refer to the same object.
-
-Example:
-
-python
-Copy code
+#### is not operator: It returns True if the operands on both sides do not refer to the same object, and False if they refer to the same object.
+```python
 x = [1, 2, 3]
 y = x
 z = [1, 2, 3]
 print(x is not y)  # Output: False
 print(x is not z)  # Output: True
-
-
+```
 The identity operator checks if two variables or objects refer to the same memory location. It is particularly useful when comparing objects that are mutable (such as lists, dictionaries, or custom objects) and determining if they are the same instance. However, for comparing the values of objects, the equality operator (==) is more appropriate.
 
-Unary Operators:
+### Unary Operators
+Unary operators in Python are operators that perform operations on a single operand or value. They allow you to manipulate or modify the value of a single operand. Here are the unary operators in Python:
 
-+ (unary plus), - (unary minus), ~ (unary bitwise NOT).
-These operators perform operations on a single operand.
-These are the primary operators in Python, and they can be combined and used in expressions to perform various operations and manipulate values. It's important to understand their behavior and precedence rules to write correct and efficient code.
+#### Unary plus (+): Represents the identity operation. It simply returns the value of the operand.
+```python
+x = 5
+y = +x
+print(y)  # Output: 5
+```
+#### Unary minus (-): Negates the value of the operand. It returns the negative value of a numeric operand.
+```python
+x = 5
+y = -x
+print(y)  # Output: -5
+```
+#### Logical NOT (not): Reverses the Boolean value of the operand. If the operand is True, it returns False, and if the operand is False, it returns True.
+
+```python
+x = True
+y = not x
+print(y)  # Output: False
+```
+#### Bitwise NOT (~): Flips the bits of the operand, converting 0 to 1 and 1 to 0. It operates on the binary representation of the operand and returns the bitwise negation of the operand.
+
+```python
+x = 5  # Binary: 0101
+y = ~x  # Binary: -0110 (Decimal: -6)
+print(y)  # Output: -6
+```
+
+Unary operators are used to perform specific operations on a single operand. They can be applied to different types of operands, such as numbers or Boolean values, to achieve different effects or transformations.
 
 
