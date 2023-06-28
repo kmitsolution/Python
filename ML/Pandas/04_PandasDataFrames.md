@@ -64,4 +64,55 @@ print(my_df.describe())  # Output:            Age
                          #         max    35.000000
 ```
 
-These are just a few examples of what you can do with a Pandas DataFrame. The DataFrame object provides a powerful and convenient way to work with structured data in Python.
+## Load files in DataFrame
+Pandas provides several methods to load files into a DataFrame. Here are examples of how to load common file formats into a DataFrame:
+
+### CSV (Comma-Separated Values) File:
+```python
+import pandas as pd
+
+# Load a CSV file into a DataFrame
+df = pd.read_csv('data.csv')
+```
+### Excel File:
+```python
+import pandas as pd
+
+# Load an Excel file into a DataFrame
+df = pd.read_excel('data.xlsx')
+```
+### JSON (JavaScript Object Notation) File:
+```python
+import pandas as pd
+
+# Load a JSON file into a DataFrame
+df = pd.read_json('data.json')
+```
+### SQL Database:
+```python
+
+import pandas as pd
+import sqlite3
+
+# Connect to the SQL database
+conn = sqlite3.connect('database.db')
+
+# Load a SQL query result into a DataFrame
+df = pd.read_sql('SELECT * FROM table_name', conn)
+```
+
+### Other File Formats:
+Pandas supports many other file formats, such as HDF5, Parquet, Feather, and more. You can use specific functions based on the file format you want to load. For example:
+```python
+import pandas as pd
+
+# Load an HDF5 file into a DataFrame
+df = pd.read_hdf('data.h5', 'key')
+
+# Load a Parquet file into a DataFrame
+df = pd.read_parquet('data.parquet')
+
+# Load a Feather file into a DataFrame
+df = pd.read_feather('data.feather')
+```
+
