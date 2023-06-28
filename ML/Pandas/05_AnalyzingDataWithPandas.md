@@ -42,3 +42,92 @@ Analyzing data with Pandas DataFrame involves performing various operations, com
 Pandas integrates well with visualization libraries like Matplotlib and Seaborn. You can use the .plot()</b> method or functions from these libraries to create various plots and charts, such as line plots, bar plots, scatter plots, histograms, etc., directly from the DataFrame.
 
 These are just some of the common operations for analyzing data with Pandas DataFrame. The library offers many more functions and methods to handle different scenarios and tasks. Pandas documentation provides comprehensive information and examples for each of these operations: https://pandas.pydata.org/docs/
+
+## Examples
+Here are examples of using <b>df.head()</b> and <b>df.tail()</b> to view the first and last few rows of a DataFrame:
+
+Let's consider a sample DataFrame representing student information:
+
+```python
+import pandas as pd
+
+data = {
+    'Name': ['Alice', 'Bob', 'Charlie', 'David', 'Eve'],
+    'Age': [21, 22, 20, 19, 23],
+    'Grade': [85, 90, 78, 92, 88]
+}
+
+df = pd.DataFrame(data)
+```
+
+### Example 1: Using df.head()
+
+```python
+print(df.head())
+
+
+Output:
+
+markdown
+Copy code
+      Name  Age  Grade
+0    Alice   21     85
+1      Bob   22     90
+2  Charlie   20     78
+3    David   19     92
+4      Eve   23     88
+
+```
+The df.head() method displays the first five rows of the DataFrame by default.
+
+### Example 2: Using df.head(n) to specify the number of rows
+
+```python
+print(df.head(3))
+
+
+Output:
+
+      Name  Age  Grade
+0    Alice   21     85
+1      Bob   22     90
+2  Charlie   20     78
+```
+
+By passing the parameter 3 to df.head(), it displays the first three rows of the DataFrame.
+
+### Example 3: Using df.tail()
+
+```python
+print(df.tail())
+
+
+Output:
+
+      Name  Age  Grade
+0    Alice   21     85
+1      Bob   22     90
+2  Charlie   20     78
+3    David   19     92
+4      Eve   23     88
+
+```
+The df.tail() method displays the last five rows of the DataFrame by default.
+
+### Example 4: Using df.tail(n) to specify the number of rows
+
+```python
+
+print(df.tail(2))
+
+
+Output:
+
+    Name  Age  Grade
+3  David   19     92
+4    Eve   23     88
+```
+
+By passing the parameter 2 to df.tail(), it displays the last two rows of the DataFrame.
+
+These examples illustrate how df.head() and df.tail() can be used to quickly inspect the beginning and end of a DataFrame, which can be helpful for understanding the structure and content of the data.
