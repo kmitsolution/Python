@@ -19,7 +19,19 @@ Once the installation is finished, you can verify that Pandas is installed corre
 ```python
 import pandas as pd
 ```
-
+```python
+pip install --upgrade pandas
+```
 If you don't encounter any errors, Pandas is successfully installed on your system.
+
+```python
+pip install jupyter
+```
+
+In a folder where you want to create the project run below command
+```
+jupyter notebook
+```
+
 
 <b>Note:</b> It is recommended to use a virtual environment (such as virtualenv or conda) to manage your Python dependencies. This helps keep your project-specific libraries isolated and avoids conflicts with other Python packages installed globally on your system.
