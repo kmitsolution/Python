@@ -5,8 +5,9 @@ Here are some key features and concepts that make Pandas a powerful tool for dat
 
 ## Data Structures:
 
-Series: A one-dimensional labeled array that can hold any data type. It is similar to a column in a spreadsheet or a database table.
-DataFrame: A two-dimensional labeled data structure with columns of potentially different types. It is similar to a spreadsheet or a SQL table and can be thought of as a collection of Series objects.
+<b>Series:</b> A one-dimensional labeled array that can hold any data type. It is similar to a column in a spreadsheet or a database table.
+
+<b>DataFrame:</b> A two-dimensional labeled data structure with columns of potentially different types. It is similar to a spreadsheet or a SQL table and can be thought of as a collection of Series objects.
 
 ## Easy Data Manipulation:
 
