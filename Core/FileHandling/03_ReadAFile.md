@@ -88,3 +88,53 @@ with open(file_path, 'r') as file:
 ```
 
 The strip() method is used to remove the newline character ('\n') from each line before printing. This helps in formatting the output properly.
+
+# Read file by readlines()
+In Python, the readlines() method is used to read all the lines from a file and return them as a list of strings. Each string in the list corresponds to a single line from the file, including the newline character ('\n') at the end of each line.
+
+Here's the syntax of the readlines() method:
+
+```python
+file.readlines()
+```
+
+Let's see an example of how to use the readlines() method:
+
+Suppose we have a file named "example.txt" with the following content:
+
+```
+Line 1: This is the first line.
+Line 2: This is the second line.
+Line 3: This is the third line.
+```
+
+### Example:
+
+```python
+file_path = 'example.txt'
+with open(file_path, 'r') as file:
+    lines = file.readlines()
+    print(lines)
+```
+
+### Output:
+
+```css
+['Line 1: This is the first line.\n', 'Line 2: This is the second line.\n', 'Line 3: This is the third line.\n']
+```
+
+In this example, the readlines() method reads all the lines from the file and stores them in a list called lines. Each element of the list corresponds to one line from the file, including the newline character.
+
+You can then process the lines in the list as needed, such as printing them, performing some operations on them, or writing them to another file.
+
+To get rid of the newline characters from each line, you can use the strip() method on each line before processing it:
+
+```python
+file_path = 'example.txt'
+with open(file_path, 'r') as file:
+    lines = file.readlines()
+    for line in lines:
+        print(line.strip())  # Using strip() to remove the newline character
+```
+
+This will print the lines without the trailing newline character.
