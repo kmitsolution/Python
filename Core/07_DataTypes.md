@@ -599,7 +599,24 @@ for key in my_dict:
 ```python
 print("Number of pairs:", len(my_dict))
 ```
+#### Example
+```python
+student = {"name": "John", "age": 25, "gender": "Male"}
 
+# Accessing keys
+for key in student:
+    print(key)   # Output: "name", "age", "gender"
+
+# Accessing values
+for value in student.values():
+    print(value)   # Output: "John", 25, "Male"
+
+# Accessing key-value pairs
+for key, value in student.items():
+    print(key, ":", value)
+    # Output: "name : John", "age : 25", "gender : Male"
+
+```
 ### Set Types:
 
 #### set: 
