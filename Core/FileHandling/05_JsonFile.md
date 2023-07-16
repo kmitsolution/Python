@@ -65,6 +65,105 @@ Email: john.doe@example.com
 
 Remember that JSON keys must be enclosed in double quotes.
 
+# Load Json with multiple records
+To load JSON data with multiple records (a list of dictionaries) in Python, you can use the json.load() function or json.loads() function. Here's how you can do it:
+
+Suppose you have a JSON file named "data.json" with the following content containing multiple records:
+
+```json
+[
+    {
+        "name": "John Doe",
+        "age": 30,
+        "email": "john.doe@example.com"
+    },
+    {
+        "name": "Jane Smith",
+        "age": 25,
+        "email": "jane.smith@example.com"
+    },
+    {
+        "name": "Bob Johnson",
+        "age": 35,
+        "email": "bob.johnson@example.com"
+    }
+]
+```
+
+## Example using json.load():
+
+```python
+import json
+
+file_path = 'data.json'
+
+# Opening the JSON file and loading the data (a list of dictionaries)
+with open(file_path, 'r') as file:
+    data = json.load(file)
+
+# Printing the loaded data
+for record in data:
+    print("Name:", record['name'])
+    print("Age:", record['age'])
+    print("Email:", record['email'])
+    print("-------------------------")
+```
+
+### Output:
+
+```makefile
+
+Name: John Doe
+Age: 30
+Email: john.doe@example.com
+-------------------------
+Name: Jane Smith
+Age: 25
+Email: jane.smith@example.com
+-------------------------
+Name: Bob Johnson
+Age: 35
+Email: bob.johnson@example.com
+-------------------------
+```
+
+Example using json.loads() (when data is in a JSON-formatted string):
+
+```python
+import json
+
+json_string = '''[
+    {
+        "name": "John Doe",
+        "age": 30,
+        "email": "john.doe@example.com"
+    },
+    {
+        "name": "Jane Smith",
+        "age": 25,
+        "email": "jane.smith@example.com"
+    },
+    {
+        "name": "Bob Johnson",
+        "age": 35,
+        "email": "bob.johnson@example.com"
+    }
+]'''
+
+data = json.loads(json_string)
+
+# Printing the loaded data
+for record in data:
+    print("Name:", record['name'])
+    print("Age:", record['age'])
+    print("Email:", record['email'])
+    print("-------------------------")
+
+```
+Output is the same as the previous example.
+
+Both methods, json.load() and json.loads(), will convert the JSON data into a Python list containing multiple dictionaries (records). You can then loop through the list and access the data in each dictionary as shown in the examples above.
+
 # Read and Write Operation for Json file
 In Python, you can perform JSON read and write operations using the built-in json module. The json module provides methods to work with JSON data, making it easy to convert Python data structures to JSON and vice versa. Here's how you can perform JSON read and write operations:
 
