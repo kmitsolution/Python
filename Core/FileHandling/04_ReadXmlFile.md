@@ -75,3 +75,81 @@ This year voters=1
 In this example, we read the XML file, accessed the <person> elements, and retrieved the values of the <name>, <age>, and <email> elements for each person in the XML file. Note that the .find() method is used to find the first occurrence of the specified element, and the .text attribute gives the text content of the element.
 
 The ElementTree module is part of the standard library in Python, so you don't need to install any additional packages to work with XML files.
+
+## Manipulate XML file using Python
+Let's consider an advanced example of working with XML in Python. In this example, we will create an XML file representing a simple playlist with songs and their details, and then we will read and manipulate the XML data using the xml.etree.ElementTree module.
+
+Creating the XML File (playlist.xml):
+```xml
+<playlist>
+    <song>
+        <title>Song 1</title>
+        <artist>Artist 1</artist>
+        <duration>3:45</duration>
+    </song>
+    <song>
+        <title>Song 2</title>
+        <artist>Artist 2</artist>
+        <duration>4:10</duration>
+    </song>
+    <song>
+        <title>Song 3</title>
+        <artist>Artist 3</artist>
+        <duration>5:15</duration>
+    </song>
+</playlist>
+```
+
+## Reading and Manipulating the XML File:
+```python
+import xml.etree.ElementTree as ET
+
+# Read the XML file
+file_path = 'playlist.xml'
+tree = ET.parse(file_path)
+root = tree.getroot()
+
+# Print the playlist
+print("Playlist:")
+for song in root.findall('song'):
+    title = song.find('title').text
+    artist = song.find('artist').text
+    duration = song.find('duration').text
+    print(f"Title: {title}, Artist: {artist}, Duration: {duration}")
+
+# Add a new song to the playlist
+new_song = ET.Element('song')
+new_title = ET.SubElement(new_song, 'title')
+new_title.text = 'New Song'
+new_artist = ET.SubElement(new_song, 'artist')
+new_artist.text = 'New Artist'
+new_duration = ET.SubElement(new_song, 'duration')
+new_duration.text = '2:30'
+root.append(new_song)
+
+# Update the duration of the first song
+first_song = root.find('song')
+first_song.find('duration').text = '3:50'
+
+# Delete the second song from the playlist
+second_song = root.findall('song')[1]
+root.remove(second_song)
+
+# Write the updated XML to a new file
+updated_file_path = 'updated_playlist.xml'
+updated_tree = ET.ElementTree(root)
+updated_tree.write(updated_file_path)
+
+print("\nUpdated Playlist:")
+for song in root.findall('song'):
+    title = song.find('title').text
+    artist = song.find('artist').text
+    duration = song.find('duration').text
+    print(f"Title: {title}, Artist: {artist}, Duration: {duration}")
+
+print("XML data has been updated and written to 'updated_playlist.xml'.")
+```
+
+In this example, we first read the XML data from the "playlist.xml" file, then print the playlist details. Next, we add a new song, update the duration of the first song, and delete the second song from the playlist. Finally, we write the updated XML data to a new file called "updated_playlist.xml" and print the updated playlist details.
+
+
