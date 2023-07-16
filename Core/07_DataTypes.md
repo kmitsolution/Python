@@ -31,6 +31,113 @@ print("quotient =", quotient)        # Output: quotient = -0.5
 print("remainder =", remainder)      # Output: remainder = 5
 print("power =", power)              # Output: power = 25
 ```
+#### Exmaple
+```# Assigning integer values to variables
+num1 = 42
+num2 = -10
+num3 = 0
+
+# Performing arithmetic operations
+addition_result = num1 + num2
+# Result: 42 + (-10) = 32
+
+subtraction_result = num1 - num3
+# Result: 42 - 0 = 42
+
+multiplication_result = num1 * num2
+# Result: 42 * (-10) = -420
+
+# Division in Python 3 returns a float, but integer division can be done using '//' operator.
+division_result = num1 / num2
+# Result: 42 / (-10) = -4.2
+
+integer_division_result = num1 // num2
+# Result: 42 // (-10) = -5
+
+# Modulo operator (%) returns the remainder of the division.
+modulo_result = num1 % num2
+# Result: 42 % (-10) = 2
+
+# Exponentiation using '**' operator
+exponentiation_result = num1 ** 3
+# Result: 42^3 = 74088
+
+# Integer division and modulo in a single line (useful to get both the quotient and remainder).
+divmod_result = divmod(num1, num2)
+# Result: divmod(42, -10) = (-5, 2)
+
+# Converting a string to an integer using the int() function
+string_num = "123"
+converted_num = int(string_num)
+# Result: converted_num = 123
+```
+### Methods associated with Integer
+In Python, integers are objects of the built-in "int" class. As objects, integers have methods associated with them. Here are some common methods that you can use with integer objects in Python:
+
+#### bit_length():
+Returns the number of bits required to represent the integer, excluding the sign and leading zeros.
+```python
+num = 42
+bit_length = num.bit_length()
+print(bit_length)  # Output: 6 (42 in binary: 101010, requires 6 bits)
+```
+#### to_bytes(length, byteorder, signed):
+Returns an array of bytes representing the integer.
+```python
+num = 42
+byte_array = num.to_bytes(2, byteorder='big', signed=False)
+print(byte_array)  # Output: b'\x00*'
+```
+#### from_bytes(bytes, byteorder, signed):
+Converts a byte array back to an integer.
+```python
+byte_array = b'\x00*'
+num = int.from_bytes(byte_array, byteorder='big', signed=False)
+print(num)  # Output: 42
+```
+#### __add__(other):
+Used to perform addition with another integer or compatible data type.
+```python
+num1 = 10
+num2 = 20
+result = num1.__add__(num2)  # Alternatively, you can use the '+' operator: result = num1 + num2
+print(result)  # Output: 30
+```
+#### __sub__(other): 
+Used to perform subtraction with another integer or compatible data type.
+```python
+num1 = 50
+num2 = 25
+result = num1.__sub__(num2)  # Alternatively, you can use the '-' operator: result = num1 - num2
+print(result)  # Output: 25
+```
+#### __mul__(other):
+Used to perform multiplication with another integer or compatible data type.
+```python
+num1 = 6
+num2 = 7
+result = num1.__mul__(num2)  # Alternatively, you can use the '*' operator: result = num1 * num2
+print(result)  # Output: 42
+```
+#### __truediv__(other):
+Used to perform division with another integer or compatible data type. Returns a floating-point result.
+```python
+num1 = 21
+num2 = 2
+result = num1.__truediv__(num2)  # Alternatively, you can use the '/' operator: result = num1 / num2
+print(result)  # Output: 10.5
+```
+#### __floordiv__(other): 
+Used to perform integer division with another integer or compatible data type. Returns an integer result.
+```python
+num1 = 21
+num2 = 2
+result = num1.__floordiv__(num2)  # Alternatively, you can use the '//' operator: result = num1 // num2
+print(result)  # Output: 10
+```
+
+These methods are generally used implicitly when you perform operations on integers using regular arithmetic operators. For example, using num1 + num2 is equivalent to num1.__add__(num2), but the former is more common and recommended in Python.
+
 
 ### float:
 In Python, the float data type is used to represent floating-point numbers, which are numbers with decimal points or fractional parts. Here's an example that demonstrates the usage of the float data type:
@@ -362,7 +469,25 @@ other_list = ['seven', 8]
 combined_list = my_list + other_list
 print(combined_list)  # Output: [1, 'two', 3, 5.5, 6, 'seven', 8]
 ```
-
+#### List Methods:
+Python provides various methods to manipulate lists.
+```python
+Copy code
+fruits = ["apple", "banana", "orange"]
+fruits.append("grape")     # Add an element to the end
+fruits.insert(1, "kiwi")   # Insert an element at a specific index
+fruits.remove("banana")    # Remove an element by value
+fruits.pop(0)              # Remove an element by index (returns the removed value)
+fruits.sort()              # Sort the list in ascending order
+```
+#### List Comprehensions:
+List comprehensions provide a concise way to create lists.
+```python
+numbers = [1, 2, 3, 4, 5]
+squared_numbers = [num**2 for num in numbers]
+print(squared_numbers)   # Output: [1, 4, 9, 16, 25]
+```
+Lists are a fundamental data structure in Python, and understanding how to work with them is essential for many programming tasks. They are widely used for storing and manipulating collections of data efficiently.
 #### tuple: 
 In Python, a tuple is an ordered and immutable collection of elements. Tuples are defined using parentheses () and the elements are separated by commas. Tuples are useful when you need to store a collection of related values that shouldn't be modified. They are commonly used for returning multiple values from a function, as dictionary keys (since they are immutable), and for representing fixed sets of values. While tuples are immutable, you can perform operations like accessing elements, obtaining the length, slicing, checking membership, and concatenating tuples.Here's an example of using the tuple data type in Python:
 ##### Creating a tuple
@@ -478,7 +603,7 @@ print("Number of pairs:", len(my_dict))
 ### Set Types:
 
 #### set: 
-In Python, the built-in set types are set and frozenset. Sets are unordered collections of unique elements, while frozensets are immutable versions of sets. Sets and frozensets are useful for tasks that involve working with unique elements, performing set operations, and removing duplicates from a sequence of items.
+In Python, the built-in set types are set and frozenset. Sets are  collections of unique elements, while frozensets are immutable versions of sets. Sets and frozensets are useful for tasks that involve working with unique elements, performing set operations, and removing duplicates from a sequence of items.
 
 Here's an example of how to create and use sets and frozensets in Python:
 
