@@ -670,7 +670,7 @@ nested_dict = {
     },
     ...
 }
-
+```
 
 Here's an example of a simple nested dictionary:
 
