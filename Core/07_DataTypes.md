@@ -74,27 +74,6 @@ converted_num = int(string_num)
 ### Methods associated with Integer
 In Python, integers are objects of the built-in "int" class. As objects, integers have methods associated with them. Here are some common methods that you can use with integer objects in Python:
 
-#### bit_length():
-Returns the number of bits required to represent the integer, excluding the sign and leading zeros.
-```python
-num = 42
-bit_length = num.bit_length()
-print(bit_length)  # Output: 6 (42 in binary: 101010, requires 6 bits)
-```
-#### to_bytes(length, byteorder, signed):
-Returns an array of bytes representing the integer.
-```python
-num = 42
-byte_array = num.to_bytes(2, byteorder='big', signed=False)
-print(byte_array)  # Output: b'\x00*'
-```
-#### from_bytes(bytes, byteorder, signed):
-Converts a byte array back to an integer.
-```python
-byte_array = b'\x00*'
-num = int.from_bytes(byte_array, byteorder='big', signed=False)
-print(num)  # Output: 42
-```
 #### __add__(other):
 Used to perform addition with another integer or compatible data type.
 ```python
