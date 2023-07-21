@@ -555,7 +555,41 @@ other_tuple = ('four', 5.5)
 combined_tuple = my_tuple + other_tuple
 print(combined_tuple)  # Output: (1, 2, 'three', 4.5, 'four', 5.5)
 ```
+### Return tuple in a function
+In Python, you can use a function to return a tuple as its output. A function can return multiple values as a single tuple, which can then be unpacked or accessed as needed. To return a tuple from a function, you simply specify the multiple values you want to return separated by commas.
 
+Here's the syntax for creating a function that returns a tuple:
+
+```python
+def my_function():
+    # Some code that calculates or retrieves values
+    value1 = 10
+    value2 = "Hello"
+    value3 = [1, 2, 3]
+    
+    # Return the values as a tuple
+    return value1, value2, value3
+```
+
+You can call this function and store its return values in separate variables or unpack them directly:
+
+```python
+# Calling the function and storing the return values in separate variables
+result1, result2, result3 = my_function()
+print(result1)  # Output: 10
+print(result2)  # Output: Hello
+print(result3)  # Output: [1, 2, 3]
+
+# Unpacking the return values directly
+result_tuple = my_function()
+print(result_tuple)  # Output: (10, 'Hello', [1, 2, 3])
+```
+
+In the first example, we directly unpack the values returned by the function into separate variables (result1, result2, and result3). In the second example, we store the entire tuple returned by the function in the variable result_tuple.
+
+It's important to note that when a function returns multiple values separated by commas, Python automatically packs them into a tuple. This means you can return any number of values from a function as a tuple.
+
+Returning a tuple from a function is a useful technique when you need to return multiple values, especially when those values are related and should be handled together as a single unit.
 #### range
 In Python, the range type represents an immutable sequence of numbers. It is often used for iterating over a sequence of numbers in a loop or generating a sequence of integers. The range() function is used to create a range object. Here's an example of using the range type in Python:
 
