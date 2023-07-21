@@ -193,6 +193,62 @@ The <b>complex</b> data type supports all basic arithmetic operations, including
 Complex numbers are commonly used in mathematical calculations and scientific applications that involve imaginary numbers and complex algebra.
 
 It's important to note that Python uses <b>j</b> to represent the imaginary unit, whereas some other programming languages use <b>i</b>.
+
+### Exception handling in Numbers
+In Python, exception handling is a mechanism that allows you to handle errors and unexpected situations gracefully, preventing your program from crashing. When an error occurs during the execution of a Python program, an exception is raised, and the program terminates if the exception is not handled.
+
+Exception handling in Python involves the use of try, except, and optionally else and finally blocks. Here's the basic syntax:
+
+```python
+try:
+    # Code that may raise an exception
+    result = some_function()
+except SomeException:
+    # Code to handle the specific exception
+    print("An exception occurred.")
+else:
+    # Code to execute if no exception occurred
+    print("No exception occurred.")
+finally:
+    # Code that will always execute, whether an exception occurred or not
+    print("Finally block executed.")
+```
+
+Let's see an example of exception handling with numbers in Python:
+
+```python
+def divide(a, b):
+    try:
+        result = a / b
+    except ZeroDivisionError:
+        print("Error: Cannot divide by zero!")
+    except TypeError:
+        print("Error: Invalid data type for division.")
+    else:
+        print(f"The result of the division is: {result}")
+    finally:
+        print("Division process finished.")
+
+# Example usage
+divide(10, 2)       # Output: The result of the division is: 5.0
+                    #         Division process finished.
+
+divide(10, 0)       # Output: Error: Cannot divide by zero!
+                    #         Division process finished.
+
+divide(10, "2")     # Output: Error: Invalid data type for division.
+                    #         Division process finished.
+```
+
+In the example above, the divide() function attempts to perform a division operation. If the division is successful, it prints the result; otherwise, it handles specific exceptions (ZeroDivisionError and TypeError) that may occur during the division.
+
+The else block is executed if no exception occurs during the execution of the try block. The finally block is executed regardless of whether an exception occurred or not.
+
+You can customize exception handling by catching specific exceptions using multiple except blocks, or you can use a more general except block to catch any exception that is not handled by specific except blocks.
+
+
+Exception handling is essential for robust programming because it allows you to gracefully handle errors and provide appropriate responses to unexpected situations, improving the overall stability of your Python programs.
+
 ### Boolean Type:
 
 In Python, the <b>bool</b> data type is used to represent Boolean values, which can have two possible states: <b>True</b> or <b>False</b>. Booleans are often used in conditional statements, logical operations, and control flow. Here are some examples that demonstrate the usage of the <b>bool</b> data type:
@@ -210,6 +266,7 @@ if is_valid:
 if not is_ready:
     print("System not ready")   # Output: System not ready
 ```
+
 #### Logical operations
 ```python
 result1 = True and False
@@ -228,6 +285,37 @@ We then use these Boolean values in conditional statements. The first if stateme
 We also perform logical operations using the Boolean values. The and operator returns <b>True</b> if both operands are <b>True</b> and <b>False</b> otherwise. The or operator returns True if at least one of the operands is True. The not operator returns the opposite Boolean value.
 
 <b>Boolean</b> values are the result of logical expressions and are often used to control the flow of a program based on certain conditions. They play a crucial role in decision-making and allow programs to execute different branches of code depending on whether certain conditions are <b>true or false.</b>
+
+In Python, there is no exception specifically for handling boolean types. Boolean values (True and False) are not typically associated with exceptions. Instead, exception handling is mainly used to deal with errors and exceptional situations that may arise during the execution of a program.
+
+However, there are certain situations where boolean values might be used in exception handling logic. For example, you can use boolean expressions to determine whether certain conditions are met and then raise specific exceptions accordingly.
+
+Here's an example of using boolean expressions in exception handling:
+
+```python
+def divide(a, b):
+    if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+        raise ValueError("Both arguments must be numeric values.")
+    
+    if b == 0:
+        raise ZeroDivisionError("Cannot divide by zero.")
+    
+    return a / b
+
+try:
+    result = divide(10, 2)
+    print("Result:", result)
+except ValueError as ve:
+    print("ValueError:", ve)
+except ZeroDivisionError as zde:
+    print("ZeroDivisionError:", zde)
+```
+
+In the example above, we have a divide() function that takes two arguments and performs division. We use boolean expressions to check if both a and b are numeric values using isinstance(), and if b is equal to zero, we raise ValueError and ZeroDivisionError, respectively. These checks help prevent invalid input and provide specific exceptions to handle those cases.
+
+It's important to note that boolean expressions are often used in conditional statements (e.g., if, elif, else) to make decisions based on certain conditions, but they are not directly related to exception handling. In exception handling, we use try, except, else, and finally blocks to handle errors and exceptional situations in a controlled manner.
+
+Keep in mind that using exception handling wisely is essential for writing robust and maintainable Python code. Only raise exceptions when necessary and handle them appropriately to ensure smooth program execution and better error handling.
 ### Text Type:
 In Python, there are several data types for representing text or string data. The main text data types in Python are str,bytes,bytearray,memoryview:
 
@@ -368,45 +456,6 @@ print(my_bytearray)  # Output: bytearray(b'Jello, Python!!')
 my_bytes = bytes(my_bytearray)
 print(my_bytes)  # Output: b'Jello, Python!!'
 ```
-#### memoryview: 
-The <b>memoryview</b> data type provides a way to access the internal data of an object, such as bytes or bytearray, without making a copy of it. It allows you to manipulate the data directly. You can create a memoryview object by calling the memoryview() constructor. 
-
-##### Creating a bytes object
-```python
-my_bytes = b'Hello, world!'
-```
-##### Creating a memoryview object
-```python
-my_memoryview = memoryview(my_bytes)
-```
-##### Accessing individual bytes using memoryview
-```python
-print(my_memoryview[0])  # Output: 72
-print(my_memoryview[7])  # Output: 119
-```
-##### Slicing the memoryview
-```python
-print(my_memoryview[7:12])  # Output: <memory at 0x...>
-```
-##### Converting memoryview to bytes
-```python
-new_bytes = bytes(my_memoryview[7:12])
-print(new_bytes)  # Output: b'world'
-```
-##### Modifying the memoryview
-```python
-my_memoryview[0] = 74
-print(my_bytes)  # Output: b'Jello, world!'
-```
-##### Changing the content of a slice
-```python
-my_memoryview[7:12] = b'Python'
-print(my_bytes)  # Output: b'Jello, Python!'
-```
-##### Obtaining the size of the memoryview
-```python
-print(len(my_memoryview))  # Output: 13
-```
 ### Sequence Types:
 In Python, there are several built-in sequence data types (list,tuple,range,dict,set ) that allow you to store and manipulate collections of items.
 #### list
@@ -479,9 +528,10 @@ In Python, a tuple is an ordered and immutable collection of elements. Tuples ar
 my_tuple = (1, 2, 'three', 4.5)
 ```
 ##### Accessing tuple elements
+```
 print(my_tuple[0])  # Output: 1
 print(my_tuple[2])  # Output: 'three'
-
+```
 ##### Tuples are immutable, so you cannot modify their elements
 ```python
 # Uncommenting the following line will raise a TypeError
@@ -518,7 +568,7 @@ my_range = range(1, 5)  # Represents the numbers 1, 2, 3, 4
 print(my_range[0])  # Output: 1
 print(my_range[2])  # Output: 3
 ```
-
+]
 ##### Length of the range
 ```python
 print(len(my_range))  # Output: 4
@@ -601,6 +651,78 @@ for key, value in student.items():
     # Output: "name : John", "age : 25", "gender : Male"
 
 ```
+#### Nested Dictionary
+In Python, a nested dictionary is a dictionary that contains one or more dictionaries as its values. This allows you to create a hierarchical or nested structure for organizing and accessing data. Each dictionary within the outer dictionary is known as a sub-dictionary or nested dictionary.
+
+The syntax for creating a nested dictionary is as follows:
+
+```python
+nested_dict = {
+    'key1': {
+        'subkey1': value1,
+        'subkey2': value2,
+        ...
+    },
+    'key2': {
+        'subkey3': value3,
+        'subkey4': value4,
+        ...
+    },
+    ...
+}
+
+
+Here's an example of a simple nested dictionary:
+
+```python
+
+# Creating a nested dictionary
+student_records = {
+    'john': {
+        'age': 25,
+        'major': 'Computer Science',
+        'gpa': 3.8
+    },
+    'alice': {
+        'age': 22,
+        'major': 'Mathematics',
+        'gpa': 3.5
+    }
+}
+
+# Accessing values from the nested dictionary
+print(student_records['john']['major'])  # Output: 'Computer Science'
+print(student_records['alice']['gpa'])   # Output: 3.5
+
+```
+In this example, the student_records dictionary contains two sub-dictionaries: one for 'john' and another for 'alice'. Each sub-dictionary stores information about a student, such as their age, major, and GPA.
+
+You can use nested loops to iterate over the keys and values of a nested dictionary:
+
+```python
+# Iterating over the keys and values of the nested dictionary
+for student, details in student_records.items():
+    print(f"Student: {student}")
+    for key, value in details.items():
+        print(f"{key}: {value}")
+    print()
+```
+
+Output:
+
+```makefile
+Student: john
+age: 25
+major: Computer Science
+gpa: 3.8
+
+Student: alice
+age: 22
+major: Mathematics
+gpa: 3.5
+```
+
+Nested dictionaries are useful when you want to organize data with multiple levels of information or create a more complex data structure to represent your data. They are commonly used in various scenarios, such as representing hierarchical configurations, multi-level data organization, and more advanced data modeling.
 ### Set Types:
 
 #### set: 
