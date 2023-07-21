@@ -182,6 +182,11 @@ In Python, the <b>complex</b> data type is used to represent complex numbers. A 
 z1 = 3 + 2j
 z2 = -1 + 4j
 ```
+Multiplying two complex numbers a + bj and c + dj results in a new complex number <b>(ac - bd) + (ad + bc)j</b>.
+
+When dividing two complex numbers a + bj and c + dj, the result is calculated as follows:
+
+<b>(a + bj) / (c + dj) = ((ac + bd) + (bc - ad)j) / (c^2 + d^2)</b>
 
 #### Mathematical operations
 ```python
