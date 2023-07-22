@@ -75,3 +75,62 @@ connection.close()
 ```
 
 In this example, we've created a table named "users" with three columns: "id," "name," and "age." You can now use the same connection and cursor objects to perform various SQL operations, such as inserting data, querying data, updating records, and more.
+
+
+### To create an SQLite database and a table, and then insert data into that table using Python, you can follow these steps:
+
+1. Import the sqlite3 module.
+2. Connect to the SQLite database or create a new one if it doesn't exist.
+3. Create a cursor object.
+4. Execute SQL commands to create the table.
+5. Insert data into the table using the INSERT INTO statement.
+6. Commit the changes to the database.
+7. Close the database connection.
+
+Here's a step-by-step example:
+
+```python
+import sqlite3
+
+# Step 1: Connect to the database or create a new one if it doesn't exist
+connection = sqlite3.connect("example.db")
+
+# Step 2: Create a cursor object
+cursor = connection.cursor()
+
+# Step 3: Execute SQL commands to create the table
+create_table_query = """
+CREATE TABLE IF NOT EXISTS users (
+    id INTEGER PRIMARY KEY,
+    name TEXT NOT NULL,
+    age INTEGER
+);
+"""
+
+cursor.execute(create_table_query)
+
+# Step 4: Insert data into the table using the INSERT INTO statement
+insert_data_query = """
+INSERT INTO users (name, age) VALUES (?, ?);
+"""
+
+# Sample data to be inserted
+data_to_insert = [
+    ("John Doe", 25),
+    ("Jane Smith", 30),
+    ("Michael Johnson", 22)
+]
+
+# Execute the query for each data entry
+cursor.executemany(insert_data_query, data_to_insert)
+
+# Step 5: Commit the changes to the database
+connection.commit()
+
+# Step 6: Close the database connection
+connection.close()
+```
+
+In this example, we first created a table named "users" with columns "id," "name," and "age." Then, we inserted three records (rows) of data into the "users" table using the executemany() method to insert multiple data entries at once.
+
+Remember to modify the create_table_query, insert_data_query, and data_to_insert based on your specific requirements and the structure of your table. After running this script, you will have an SQLite database file named "example.db" with the "users" table populated with the provided data.
