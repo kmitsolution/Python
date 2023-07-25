@@ -44,7 +44,116 @@ Keep in mind that when working with threads, you should be careful about potenti
 
 Again, if you have CPU-bound tasks and want to fully utilize multiple CPU cores, consider using the multiprocessing module for parallel processing instead of the threading module.
 
+# locks in threads
+In Python, accessing variables across different threads can lead to potential race conditions and data inconsistency issues if not handled properly. To safely access variables in different threads, you should use synchronization mechanisms like locks to ensure that only one thread can modify the variable at a time.
 
+Here's an example of how you can safely access a variable in different threads using a Lock from the threading module:
+
+```python
+import threading
+
+# Global variable shared by multiple threads
+shared_variable = 0
+
+# Lock to synchronize access to the shared variable
+lock = threading.Lock()
+
+# Function that increments the shared variable
+def increment_variable():
+    global shared_variable
+    for _ in range(1000000):
+        # Acquire the lock before modifying the shared variable
+        with lock:
+            shared_variable += 1
+
+# Function that decrements the shared variable
+def decrement_variable():
+    global shared_variable
+    for _ in range(1000000):
+        # Acquire the lock before modifying the shared variable
+        with lock:
+            shared_variable -= 1
+
+if __name__ == "__main__":
+    # Creating multiple threads
+    thread1 = threading.Thread(target=increment_variable)
+    thread2 = threading.Thread(target=decrement_variable)
+
+    # Starting the threads
+    thread1.start()
+    thread2.start()
+
+    # Wait for both threads to complete
+    thread1.join()
+    thread2.join()
+
+    print("Final value of shared_variable:", shared_variable)
+```
+
+In this example, we have a shared variable shared_variable that is accessed by two threads thread1 and thread2. To ensure safe access, we use a Lock called lock. Before modifying the shared_variable, each thread acquires the lock using the with lock statement. This ensures that only one thread can modify the variable at any given time, preventing race conditions.
+
+Keep in mind that using locks can introduce some performance overhead, and it's essential to use them judiciously. In some cases, you might consider using other synchronization primitives, such as Semaphore or Condition, depending on the specific requirements of your multithreaded application.
+
+### Semaphore
+In Python, a Semaphore is a synchronization primitive provided by the threading module that allows you to control access to a shared resource. A Semaphore is essentially a counter that restricts the number of threads that can access the shared resource concurrently. It can be used to prevent thread contention and manage access to resources with limited capacity.
+
+The Semaphore has two primary methods: acquire() and release(). When a thread calls acquire(), the Semaphore decrements its internal counter, and if the counter becomes zero or negative, the acquire() call blocks the thread until another thread calls release() to increment the counter.
+
+Here's an example of how to use a Semaphore in Python:
+
+```python
+
+import threading
+
+# A shared resource with a capacity of 3
+shared_resource = []
+semaphore = threading.Semaphore(3)
+
+# Function that adds an item to the shared resource
+def add_item(item):
+    semaphore.acquire()
+    shared_resource.append(item)
+    print(f"Added item {item} to the shared resource.")
+    semaphore.release()
+
+# Function that removes an item from the shared resource
+def remove_item():
+    semaphore.acquire()
+    if len(shared_resource) > 0:
+        item = shared_resource.pop(0)
+        print(f"Removed item {item} from the shared resource.")
+    else:
+        print("Shared resource is empty.")
+    semaphore.release()
+
+if __name__ == "__main__":
+    # Creating multiple threads
+    threads = []
+
+    for i in range(5):
+        thread = threading.Thread(target=add_item, args=(i,))
+        threads.append(thread)
+
+    for i in range(3):
+        thread = threading.Thread(target=remove_item)
+        threads.append(thread)
+
+    # Starting the threads
+    for thread in threads:
+        thread.start()
+
+    # Wait for all threads to complete
+    for thread in threads:
+        thread.join()
+
+    print("Final shared resource:", shared_resource)
+```
+
+In this example, we have a shared resource shared_resource, which is a list with a capacity of 3. We use a Semaphore with an initial value of 3 to control access to this shared resource. Three threads are responsible for adding items to the resource, and two threads are responsible for removing items from the resource.
+
+When adding or removing an item, the respective thread first calls acquire() on the semaphore to decrease its internal counter. If the counter is positive, the thread proceeds to perform the operation. Otherwise, it waits until another thread releases the semaphore by calling release(). After the operation is done, the thread calls release() to increment the counter, allowing other threads to access the shared resource.
+
+Using Semaphores is a way to manage concurrent access to shared resources, and it helps in preventing issues like data inconsistency and race conditions.
 ## Multiprocessing:
 1. Multiprocessing allows you to create multiple processes that run independently and concurrently.
 2. Python's multiprocessing module allows you to create and manage processes.
