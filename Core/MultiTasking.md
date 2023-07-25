@@ -260,3 +260,51 @@ if __name__ == "__main__":
 Python has various coroutine-based libraries like aiohttp (for asynchronous HTTP requests), aiomysql (for asynchronous MySQL database access), etc., which allow you to perform asynchronous tasks efficiently.
 
 Multitasking in Python allows you to leverage the system's resources effectively, leading to better performance and responsiveness in certain scenarios. However, it's important to be mindful of potential concurrency issues, such as race conditions or deadlocks, when working with multiple threads or processes. Proper synchronization mechanisms like locks or semaphores should be used when shared resources are accessed by multiple tasks simultaneously.
+
+
+### Locking in multiprocessing
+
+In Python's multiprocessing module, you can use a shared variable among multiple processes using the Value or Array objects from the multiprocessing module. These objects enable you to create shared memory locations accessible by multiple processes. Unlike threads, processes have separate memory spaces, so sharing data between processes requires using these specialized data structures.
+
+Here's an example of how to use a shared variable with Value in the multiprocessing module:
+
+```python
+
+import multiprocessing
+
+# A shared variable
+shared_variable = multiprocessing.Value('i', 0)
+
+# Function that increments the shared variable
+def increment_variable(shared_var):
+    for _ in range(100000):
+        with shared_var.get_lock():
+            shared_var.value += 1
+
+# Function that decrements the shared variable
+def decrement_variable(shared_var):
+    for _ in range(100000):
+        with shared_var.get_lock():
+            shared_var.value -= 1
+
+if __name__ == "__main__":
+    # Creating multiple processes
+    process1 = multiprocessing.Process(target=increment_variable, args=(shared_variable,))
+    process2 = multiprocessing.Process(target=decrement_variable, args=(shared_variable,))
+
+    # Starting the processes
+    process1.start()
+    process2.start()
+
+    # Wait for both processes to complete
+    process1.join()
+    process2.join()
+
+    print("Final value of shared_variable:", shared_variable.value)
+```
+
+In this example, we use multiprocessing.Value('i', 0) to create a shared integer variable initialized to 0. The 'i' argument specifies the data type (integer). The Value object is used to create the shared variable, and the get_lock() method ensures that access to the shared variable is protected by a lock to avoid race conditions.
+
+When accessing the shared variable within the functions increment_variable and decrement_variable, we use a with statement and the lock to make sure that only one process can modify the variable at a time.
+
+Keep in mind that shared variables introduce synchronization overhead due to the need for locks, so it's essential to use them only when necessary. In some cases, alternative communication methods like multiprocessing.Queue or multiprocessing.Pipe may be more suitable, depending on the specific requirements of your application.
