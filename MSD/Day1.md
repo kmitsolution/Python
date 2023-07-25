@@ -65,3 +65,18 @@ n1,f,p =one_row
 print(n1,f,p)
 connection.close()
 ```
+
+# Operator overloading
+```python
+class Numbers:
+    def __init__(self, num1,num2):
+        self.num1=num1
+        self.num2=num2
+        self.result=0
+    # Operator overloading
+    def __add__(self, other):
+         self.result= self.num1 + other.num1 + self.num2 + other.num2
+         return self
+    def __str__(self):
+        
+```
