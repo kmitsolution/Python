@@ -44,6 +44,64 @@ Keep in mind that when working with threads, you should be careful about potenti
 
 Again, if you have CPU-bound tasks and want to fully utilize multiple CPU cores, consider using the multiprocessing module for parallel processing instead of the threading module.
 
+# Race Condition in threads
+A race condition is a common concurrency-related issue that occurs when multiple threads or processes access a shared resource or perform a sequence of operations concurrently, and the final outcome of the program depends on the timing of the threads' execution. The result becomes unpredictable, and the program may behave unexpectedly or produce incorrect results.
+
+Race conditions in Python (and other programming languages) are often caused by a lack of proper synchronization or coordination between threads or processes that access shared data. The Global Interpreter Lock (GIL) in Python further exacerbates race condition issues in multi-threaded programs, making them more prominent in CPU-bound tasks.
+
+Let's illustrate a simple example of a race condition in Python:
+
+```python
+import threading
+
+# A shared variable
+shared_variable = 0
+
+# Function that increments the shared variable
+def increment_variable():
+    global shared_variable
+    for _ in range(100000):
+        shared_variable += 1
+
+# Function that decrements the shared variable
+def decrement_variable():
+    global shared_variable
+    for _ in range(100000):
+        shared_variable -= 1
+
+if __name__ == "__main__":
+    # Creating multiple threads
+    thread1 = threading.Thread(target=increment_variable)
+    thread2 = threading.Thread(target=decrement_variable)
+
+    # Starting the threads
+    thread1.start()
+    thread2.start()
+
+    # Wait for both threads to complete
+    thread1.join()
+    thread2.join()
+
+    print("Final value of shared_variable:", shared_variable)
+```
+
+In this example, two threads (thread1 and thread2) are concurrently modifying the shared variable shared_variable. The threads increment and decrement the variable 100,000 times each. Due to the lack of proper synchronization, the final value of shared_variable is non-deterministic, and the program suffers from a race condition.
+
+The output may vary each time you run the program, and you may see results like:
+
+```sql
+Final value of shared_variable: -2774
+```
+
+or
+
+```sql
+
+Final value of shared_variable: 313
+```
+
+To avoid race conditions, you need to use synchronization primitives like locks, semaphores, or threading constructs that ensure exclusive access to shared resources. These mechanisms enforce proper order of execution and prevent multiple threads from accessing critical sections of the code simultaneously. Synchronization helps maintain data consistency and ensure predictable program behavior when working with shared data.
+
 # locks in threads
 In Python, accessing variables across different threads can lead to potential race conditions and data inconsistency issues if not handled properly. To safely access variables in different threads, you should use synchronization mechanisms like locks to ensure that only one thread can modify the variable at a time.
 
