@@ -13,8 +13,9 @@ except:
 # Sqlite create db
 ```python
 import sqlite3
-create_table="""
-Create table Numbers(
+
+create_table = """
+Create table IF NOT EXISTS Numbers(
 num1 int,
 fact int,
 isPrime int)
@@ -26,18 +27,41 @@ insert_data_query = """
 INSERT INTO Numbers VALUES (?,?, ?);
 """
 data_to_insert = [
-    (0,1,0),
-    (1,1,0),
-    (2,2,0),
-    (3,6,1),
-    (4,24,0),
-    (5,120,1)
+    (0, 1, 0),
+    (1, 1, 0),
+    (2, 2, 0),
+    (3, 6, 1),
+    (4, 24, 0),
+    (5, 120, 1)
 ]
-cursor.executemany(insert_data_query, data_to_insert)
+#cursor.executemany(insert_data_query, data_to_insert)
 
-insert_query="""
-Insert into Numbers Values(?,?)
-"""
+
 connection.commit()
+connection.close()
+
+
+# factorial of a number
+def fact(number):
+    f = 1
+    for x in range(1, number):
+        f *= x
+    return f
+# Reading the database
+connection = sqlite3.connect("C:\\MSD_Python01\\example.db")
+# connection = sqlite3.connect("example.db")
+
+# Create a cursor object
+cursor = connection.cursor()
+
+# Execute the SELECT query to retrieve data
+select_query = "SELECT * FROM Numbers where num1=5;"
+cursor.execute(select_query)
+
+# Fetch one row from the result set
+one_row = cursor.fetchone()
+# print(one_row)
+n1,f,p =one_row
+print(n1,f,p)
 connection.close()
 ```
