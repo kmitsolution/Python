@@ -85,6 +85,64 @@ filtered_data = df[(df['date_column'] >= start_date) & (df['date_column'] <= end
 df['duration'] = df['end_time'] - df['start_time']
 ```
 
+## pd.Timestamp
+In pandas, you can work with time-related functions using the Timestamp and Timedelta objects. The Timestamp object represents a single date and time, while the Timedelta object represents a duration or time difference. Here are some of the common time functions in pandas:
+
+### pd.Timestamp:
+```python
+import pandas as pd
+
+# Create a Timestamp object for a specific date and time
+timestamp = pd.Timestamp('2023-07-26 15:30:00')
+
+# Access various components of the Timestamp
+year = timestamp.year
+month = timestamp.month
+day = timestamp.day
+hour = timestamp.hour
+minute = timestamp.minute
+second = timestamp.second
+weekday = timestamp.weekday()  # Monday=0, Sunday=6
+```
+### pd.to_datetime:
+```python
+# Convert a string or a list of strings to Timestamp objects
+date_string = '2023-07-26 15:30:00'
+timestamp = pd.to_datetime(date_string)
+```
+### pd.Timedelta:
+```python
+# Create a Timedelta object representing a duration of 1 day and 6 hours
+timedelta = pd.Timedelta(days=1, hours=6)
+
+# You can also create Timedelta from a string
+timedelta_str = '2 days 3 hours 30 minutes'
+timedelta = pd.Timedelta(timedelta_str)
+```
+### pd.to_timedelta:
+```python
+# Convert a string or a list of strings to Timedelta objects
+timedelta_str = '1 day 2 hours 30 minutes'
+timedelta = pd.to_timedelta(timedelta_str)
+```
+
+### pd.date_range:
+```python
+# Create a date range with a specific frequency
+# Here, creating 5 timestamps, one each hour, starting from '2023-07-26 10:00:00'
+date_range = pd.date_range(start='2023-07-26 10:00:00', periods=5, freq='H')
+```
+### pd.to_period and pd.to_timestamp:
+```python
+# Convert a Timestamp to a Period (e.g., convert to monthly period)
+timestamp = pd.Timestamp('2023-07-26')
+period = timestamp.to_period(freq='M')
+
+# Convert a Period back to a Timestamp
+timestamp_again = period.to_timestamp()
+```
+
+These functions allow you to handle time-related data, create date ranges, calculate time differences, and convert between different time representations. You can perform various time series operations and manipulations using these functions in pandas. For more information, check the pandas documentation on time-related functionality: https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html
 
 
 ## Visualization:
