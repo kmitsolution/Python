@@ -14,6 +14,7 @@ import seaborn as sns
 import matplotlib.pyplot as plt
 
 arr_2d=np.linspace(1,5,12).reshape(4,3)
+sns.heatmap(arr_2d,annot=True)
 sns.heatmap(arr_2d)
 plt.show()
 ```
