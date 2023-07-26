@@ -37,6 +37,56 @@ Analyzing data with Pandas DataFrame involves performing various operations, com
 4. <b>df.value_counts()</b>: Count the occurrences of unique values in a column.
 5. <b>df.isnull()</b>, <b>df.notnull()</b>: Check for missing values in the DataFrame.
 
+## date funcitons
+Pandas is a popular Python library used for data manipulation and analysis. It provides powerful tools for working with dates and times. Here are some common date operations in pandas:
+
+### Convert a column to datetime format:
+```python
+
+import pandas as pd
+
+# Assuming 'date_column' is the column containing dates in a non-datetime format
+df['date_column'] = pd.to_datetime(df['date_column'])
+```
+### Create a date range:
+```python
+# Create a date range from start_date to end_date with a frequency of '1 day'
+date_range = pd.date_range(start='2023-01-01', end='2023-01-10', freq='D')
+```
+### Extract date components:
+```python
+# Assuming 'date_column' is a datetime column
+df['year'] = df['date_column'].dt.year
+df['month'] = df['date_column'].dt.month
+df['day'] = df['date_column'].dt.day
+df['weekday'] = df['date_column'].dt.weekday  # Monday=0, Sunday=6
+```
+### Resample time series data:
+```python
+# Assuming 'date_column' is the datetime index of the DataFrame
+# Resample to monthly and calculate the mean for each month
+monthly_data = df.resample('M').mean()
+```
+### Shift dates in a DataFrame:
+```python
+# Shift the 'date_column' one day forward
+df['next_day'] = df['date_column'].shift(periods=1)
+```
+### Filter data based on dates:
+```python
+# Filter data for dates between 'start_date' and 'end_date'
+start_date = pd.to_datetime('2023-01-01')
+end_date = pd.to_datetime('2023-01-31')
+filtered_data = df[(df['date_column'] >= start_date) & (df['date_column'] <= end_date)]
+```
+### Calculate time differences:
+```python
+# Assuming 'start_time' and 'end_time' are datetime columns
+df['duration'] = df['end_time'] - df['start_time']
+```
+
+
+
 ## Visualization:
 
 Pandas integrates well with visualization libraries like Matplotlib and Seaborn. You can use the .plot()</b> method or functions from these libraries to create various plots and charts, such as line plots, bar plots, scatter plots, histograms, etc., directly from the DataFrame.
@@ -131,3 +181,5 @@ Output:
 By passing the parameter 2 to df.tail(), it displays the last two rows of the DataFrame.
 
 These examples illustrate how df.head() and df.tail() can be used to quickly inspect the beginning and end of a DataFrame, which can be helpful for understanding the structure and content of the data.
+
+
