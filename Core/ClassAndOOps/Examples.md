@@ -60,7 +60,7 @@ Please note that this is a basic illustration to showcase class usage in a bank 
 Let's create an advanced example with inheritance, involving a base class BankAccount and two subclasses CheckingAccount and SavingsAccount. The CheckingAccount will have an additional overdraft limit, and the SavingsAccount will have an interest rate.
 
 ```python
-Copy code
+
 class BankAccount:
     def __init__(self, account_number, account_holder, balance=0):
         self.account_number = account_number
