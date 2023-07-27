@@ -7,7 +7,7 @@ The syntax for savefig() is as follows:
 import matplotlib.pyplot as plt
 
 plt.savefig(filename, format='file_format')
-``
+```
 
 Where:
 
