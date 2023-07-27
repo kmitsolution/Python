@@ -121,3 +121,84 @@ Date
 ```
 
 In this example, we have a DataFrame with sales data for different products on different dates. By using pivot(), we reshaped the DataFrame to have dates as rows and products as columns, with the corresponding sales values filling the cells. The 'Date' column became the index, 'Product' column became the columns, and 'Sales' column filled the DataFrame cells.
+
+# melt() vs pivot
+Let's consider a real-time example of using the melt() function in pandas to transform data related to sales transactions from wide-format to long-format.
+
+Suppose you have a DataFrame with sales data for different products, and each column represents the sales for a specific month. You want to transform this wide-format data into a long-format where each row represents a unique sales transaction for a particular product in a specific month.
+
+Here's how you can use melt() for this transformation:
+
+```python
+
+import pandas as pd
+
+# Sample DataFrame in wide-format
+data = {
+    'Product': ['Product A', 'Product B'],
+    'January': [100, 150],
+    'February': [120, 130],
+    'March': [130, 140]
+}
+
+df = pd.DataFrame(data)
+
+# Original DataFrame (wide-format):
+#      Product  January  February  March
+# 0  Product A      100       120    130
+# 1  Product B      150       130    140
+
+# Using melt to transform into long-format
+melted_df = pd.melt(df, id_vars='Product', var_name='Month', value_name='Sales')
+
+# Melted DataFrame (long-format):
+#      Product      Month  Sales
+# 0  Product A    January    100
+# 1  Product B    January    150
+# 2  Product A   February    120
+# 3  Product B   February    130
+# 4  Product A      March    130
+# 5  Product B      March    140
+```
+
+In this example, the original DataFrame has the sales data for 'Product A' and 'Product B' for three different months. After using melt(), the data is transformed into a long-format DataFrame, where each row represents a unique sales transaction for a specific product in a particular month. This long-format data is more suitable for performing various analyses, generating visualizations, and handling time-series data.
+
+### pivot
+Let's consider a real-time example of using the pivot() function in pandas to transform long-format data of sales transactions back into wide-format.
+
+Using the long-format sales data from the previous example, we'll now use pivot() to transform it back into wide-format, with 'Product' as rows, 'Month' as columns, and 'Sales' as the values.
+
+```python
+import pandas as pd
+
+# Sample DataFrame in long-format
+data = {
+    'Product': ['Product A', 'Product B', 'Product A', 'Product B', 'Product A', 'Product B'],
+    'Month': ['January', 'January', 'February', 'February', 'March', 'March'],
+    'Sales': [100, 150, 120, 130, 130, 140]
+}
+
+df = pd.DataFrame(data)
+
+# Original DataFrame (long-format):
+#      Product      Month  Sales
+# 0  Product A    January    100
+# 1  Product B    January    150
+# 2  Product A   February    120
+# 3  Product B   February    130
+# 4  Product A      March    130
+# 5  Product B      March    140
+
+# Using pivot to transform into wide-format
+pivoted_df = df.pivot(index='Product', columns='Month', values='Sales')
+
+# Pivoted DataFrame (wide-format):
+# Month        February  January  March
+# Product
+# Product A          120      100    130
+# Product B          130      150    140
+```
+
+In this example, the original DataFrame has the sales data for 'Product A' and 'Product B' for three different months in long-format. After using pivot(), the data is transformed into a wide-format DataFrame, where each row represents a unique product, and the columns represent the sales for different months. This wide-format data is more suitable for tabular representation, data export, and further analysis.
+
+The pivot() function allows you to reshape and transform data easily and efficiently, making it a valuable tool in data analysis and reporting.
