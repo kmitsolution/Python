@@ -75,6 +75,78 @@ http://127.0.0.1:8000/
 
 You should see a list of products displayed with their names and prices.
 
-### Summary
+In Django templates, the primary way to iterate over collections is indeed with the `{% for %}` loop. However, Django templates also support several other control flow and filtering mechanisms. Here’s a brief overview:
 
-You’ve successfully used loops in Django templates to iterate through a list and dynamically display content. This allows for flexible rendering of data based on context provided from your views. If you have more questions or need further examples, feel free to ask!
+### 1. `{% for %}` Loop
+The main way to iterate through lists or dictionaries.
+
+**Example**:
+```django
+{% for item in items %}
+    <li>{{ item }}</li>
+{% endfor %}
+```
+
+### 2. `{% if %}`, `{% elif %}`, and `{% else %}`
+These statements allow for conditional logic, which can be combined with loops.
+
+**Example**:
+```django
+{% for item in items %}
+    {% if item.is_active %}
+        <li>{{ item.name }}</li>
+    {% else %}
+        <li>{{ item.name }} (Inactive)</li>
+    {% endif %}
+{% endfor %}
+```
+
+### 3. `{% empty %}` Clause
+Used with the `{% for %}` loop to handle empty lists.
+
+**Example**:
+```django
+<ul>
+    {% for item in items %}
+        <li>{{ item }}</li>
+    {% empty %}
+        <li>No items found.</li>
+    {% endfor %}
+</ul>
+```
+
+### 4. `{% with %}`
+Used to create a context variable for reuse, which can be useful in conjunction with loops.
+
+**Example**:
+```django
+{% for item in items %}
+    {% with item.price|floatformat:2 as formatted_price %}
+        <li>{{ item.name }} - ${{ formatted_price }}</li>
+    {% endwith %}
+{% endfor %}
+```
+
+### 5. `{% include %}`
+Allows you to include other templates, which can be useful for reusing code and combining loops.
+
+**Example**:
+```django
+{% for item in items %}
+    {% include 'item_template.html' with item=item %}
+{% endfor %}
+```
+
+### 6. Template Filters
+Django provides built-in filters that you can apply in your loops, such as `slice`, `dictsort`, and more.
+
+**Example**:
+```django
+{% for item in items|slice:":5" %}
+    <li>{{ item }}</li>
+{% endfor %}
+```
+
+### Conclusion
+
+While the `{% for %}` loop is the primary tool for iteration in Django templates, you also have a variety of other control flow and context management tools at your disposal. This allows for quite flexible and powerful template rendering. If you have specific use cases or questions, feel free to ask!
