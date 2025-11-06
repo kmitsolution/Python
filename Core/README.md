@@ -1,4 +1,4 @@
-## 🐍 **Python Core Tutorials – Outline**
+## 🐍 **Python Core**
 
 ### **1. Introduction to Python**
 
